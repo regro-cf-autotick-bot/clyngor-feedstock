@@ -1,18 +1,18 @@
 {% set name = "clyngor" %}
-{% set version = "0.3.31" %}
+{% set version = "0.4.3" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 6d454af5ab0612f0da22f0734030f88bb52de99415458b3b92fc88029135c8bf
+  sha256: 03768c37a3bfead862ad2bc2e39abd8da13f080deea37f7b59050c821f6ab145
 
 build:
   number: 0
   noarch: python
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+  script: '{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv '
 
 requirements:
   host:
