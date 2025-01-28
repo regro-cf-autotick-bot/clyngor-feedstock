@@ -6,27 +6,29 @@ package:
   version: "{{ version }}"
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 6d454af5ab0612f0da22f0734030f88bb52de99415458b3b92fc88029135c8bf
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
 
 requirements:
   host:
     - pip
-    - python
+    - python {{ python_min }}
     - arpeggio >=1.6.1
     - pypeg2 >=2.15.2
     - pytest >=3.2.1
   run:
-    - python
+    - python >={{ python_min }}
     - arpeggio >=1.6.1
     - pypeg2 >=2.15.2
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - clyngor
 
